@@ -1,0 +1,19 @@
+<div class="my-5 d-flex">
+  <%= link_to 'Home', root_path %>
+  <%= link_to '+', new_meal_path, class: 'p-4 bg-primary text-white' %>
+</div>
+
+<% current_user.meals.each do |meal| %>
+  <li class="border d-flex justify-content-between">
+    <h4><%= meal.name %></h4>
+    <p><%= meal.price %> $ </p>
+    <div class="d-flex">
+      <%= link_to 'Edit',  edit_meal_path(meal)  %>
+      <%= link_to "Remove",
+              meal_path(meal),
+              method: :delete,
+              data: { confirm: "Are you sure?" },
+              class: 'mx-3' %>
+    </div>
+  </li>
+<% end %>

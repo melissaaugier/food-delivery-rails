@@ -1,0 +1,6 @@
+<% current_user.customers.each do |customer| %>
+  <li class="border d-flex justify-content-between">
+    <h4><%= customer.name %></h4>
+    <p><%= customer.address %></p>
+  </li>
+<% end %>

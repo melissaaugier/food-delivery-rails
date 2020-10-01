@@ -1,2 +1,31 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<h1>Bienvenue <%= current_user.name %>,  </h1>
+
+
+<div class="d-flex w-100">
+  <div class="w-50">
+    <h2>Vos clients</h2>
+    <ul>
+      <% current_user.customers.first(5).each do |customer| %>
+        <li class="border">
+          <h3><%= customer.name %></h3>
+          <p><%= customer.address %> </p>
+        </li>
+      <% end %>
+    </ul>
+    <%= link_to 'Voir tous vos clients', customers_path, class: 'btn btn-primary text-center' %>
+  </div>
+  <div class="w-50">
+    <h2>Vos plats</h2>
+    <ul>
+      <% current_user.meals.first(5).each do |meal| %>
+        <li class="border d-flex justify-content-between">
+          <h4><%= meal.name %></h4>
+          <p><%= meal.price %> $ </p>
+        </li>
+      <% end %>
+    </ul>
+    <%= link_to 'Voir tous vos plats', meals_path, class: 'btn btn-primary text-center' %>
+
+
+  </div>
+</div>
